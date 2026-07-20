@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import {
   Search,
   Heart,
+  House,
   ShoppingBag,
   User,
   Menu,
@@ -113,15 +114,6 @@ export function SiteHeader() {
       >
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3">
 
-          {/* mobile burger */}
-          <button
-            onClick={() => setOpen(true)}
-            className="lg:hidden rounded-full bg-white/10 p-3 text-white backdrop-blur-xl cursor-pointer"
-          >
-            <Menu />
-            <span className="sr-only">Menu</span>
-          </button>
-
           {/* logo */}
           <Link href="/" className="shrink-0">
             <Image
@@ -129,11 +121,13 @@ export function SiteHeader() {
               width={180}
               height={40}
               alt="Logo"
+              sizes="(min-width: 1024px) 180px, 1px"
+              className="w-full h-auto"
             />
           </Link>
 
           {/* search */}
-          <div className="relative hidden flex-1 md:block">
+          <div className="relative flex-1">
             <div className="relative">
               
               {/* ICON */}
@@ -166,7 +160,7 @@ export function SiteHeader() {
           </div>
 
           {/* icons */}
-          <div className="ml-auto flex items-center gap-2 text-white">
+          <div className="ml-auto flex items-center gap-2 text-white hidden lg:flex">
 
             <button
                 onClick={toggleTheme}
@@ -432,6 +426,127 @@ export function SiteHeader() {
 
       )}
 
+            {/* MOBILE FLOATING NAV */}
+      <div
+        className="
+          fixed
+          bottom-4
+          left-1/2
+          z-[90]
+          flex
+          -translate-x-1/2
+          items-center
+          gap-1
+          rounded-full
+          border
+          border-white/15
+          bg-white/10
+          dark:bg-black/25
+          backdrop-blur-3xl
+          px-1
+          py-2
+          shadow-[0_20px_60px_rgba(0,0,0,.35)]
+          lg:hidden
+        "
+        style={{
+          paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))",
+        }}
+      >
+        {/* Home */}
+        <Link
+          href="/"
+          className="
+            rounded-full
+            p-3
+            text-white
+            transition
+            hover:bg-white/10
+          "
+        >
+          <House className="size-6" />
+        </Link>
+
+        {/* Account */}
+        <Link
+          href="/account"
+          className="
+            rounded-full
+            p-3
+            text-white
+            transition
+            hover:bg-white/10
+          "
+        >
+          <User className="size-6" />
+        </Link>
+
+        {/* Wishlist */}
+        <Link
+          href="/wishlist"
+          className="
+            rounded-full
+            p-3
+            text-white
+            transition
+            hover:bg-white/10
+          "
+        >
+          <Heart className="size-6" />
+        </Link>
+
+        {/* Cart */}
+        <Link href="/cart" onClick={() => setOpenMiniCart(false)}>
+          <button
+            className="
+              relative
+              rounded-full
+              p-3
+              text-white
+              shadow-lg
+              transition
+              hover:scale-105
+              cursor-pointer
+            "
+          >
+            <ShoppingBag className="size-6" />
+
+              <span
+                className="
+                  absolute
+                  -right-1
+                  -top-1
+                  flex
+                  h-5
+                  w-5
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-primary
+                  text-[10px]
+                  font-bold
+                  text-white
+                "
+              >
+                {totalItemsCount}
+              </span>
+          </button>
+        </Link>
+
+        {/* Menu */}
+        <button
+          onClick={() => setOpen(true)}
+          className="
+            rounded-full
+            p-3
+            text-white
+            transition
+            hover:bg-white/10
+            cursor-pointer
+          "
+        >
+          <Menu className="size-6" />
+        </button>
+      </div>
     </header>
   )
 }

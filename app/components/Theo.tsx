@@ -125,11 +125,11 @@ export default function Theo() {
                 </div>
 
                 <h3 className="font-bold text-primary text-lg">
-                  Hi, I'm Theo!
+                  Hi, I&apos;m Theo!
                 </h3>
 
                 <p className="mt-2 text-sm text-gray-600">
-                  I'm your personal toy shop assistant. I can help you find toys,
+                  I&apos;m your personal toy shop assistant. I can help you find toys,
                   recommend gifts, discover the latest releases and answer questions
                   about products in our store.
                 </p>
@@ -246,7 +246,7 @@ export default function Theo() {
       {!open &&
         <button
           onClick={()=>setOpen(true)}
-          className="fixed bottom-6 right-6 size-16 rounded-full bg-primary text-white shadow-xl flex items-center justify-center cursor-pointer"
+          className="fixed bottom-5 right-3 size-15 rounded-full bg-primary text-white shadow-xl flex items-center justify-center cursor-pointer"
         >
           <MessageCircle />
         </button>
