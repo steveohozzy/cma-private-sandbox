@@ -56,57 +56,39 @@ export function SiteHeader() {
   // Dynamically calculate the true sum of all item quantities in the basket
   const totalItemsCount = items.reduce((acc, item) => acc + (item.quantity || 1), 0)
 
+  const getInitialTheme = (): "light" | "dark" => {
+  if (typeof window === "undefined") {
+    return "light"
+  }
+
+  const saved = localStorage.getItem("theme")
+
+  if (saved === "light" || saved === "dark") {
+    return saved
+  }
+
+  const sunsetByMonth = [16, 17, 18, 20, 21, 21, 21, 20, 19, 18, 16, 16]
+  const now = new Date()
+
+  return now.getHours() >= sunsetByMonth[now.getMonth()]
+    ? "dark"
+    : "light"
+  }
+
   useEffect(() => {
-    const html = document.documentElement
-
-    const saved = localStorage.getItem("theme")
-
-    // User has already chosen a theme
-    if (saved === "light" || saved === "dark") {
-      html.classList.remove("light", "dark")
-      html.classList.add(saved)
-      setTheme(saved)
-      return
-    }
-
-    // Approximate UK sunset hour by month
-    const sunsetByMonth = [
-      16, // Jan
-      17, // Feb
-      18, // Mar
-      20, // Apr
-      21, // May
-      21, // Jun
-      21, // Jul
-      20, // Aug
-      19, // Sep
-      18, // Oct
-      16, // Nov
-      16, // Dec
-    ]
-
-    const now = new Date()
-    const sunsetHour = sunsetByMonth[now.getMonth()]
-    const defaultTheme =
-      now.getHours() >= sunsetHour ? "dark" : "light"
-
-    html.classList.remove("light", "dark")
-    html.classList.add(defaultTheme)
-
-    setTheme(defaultTheme)
-  }, [])
+    document.documentElement.classList.remove("light", "dark")
+    document.documentElement.classList.add(theme)
+  }, [theme])
 
   const toggleTheme = () => {
-  const html = document.documentElement
+    const html = document.documentElement
 
-  const next = theme === "dark" ? "light" : "dark"
+    const dark = html.classList.toggle("dark")
 
-    html.classList.remove("light", "dark")
-    html.classList.add(next)
+    html.classList.toggle("light", !dark)
 
-    localStorage.setItem("theme", next)
-    setTheme(next)
-  }
+    localStorage.setItem("theme", dark ? "dark" : "light")
+}
 
   return (
     <header className="sticky top-0 z-50 w-full overflow-x-clip">
