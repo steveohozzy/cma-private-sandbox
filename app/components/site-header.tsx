@@ -617,7 +617,8 @@ export function SiteHeader() {
           className="
             rounded-full
             p-3
-            text-white
+            text-foreground
+            dark:text-white/80
             transition
             hover:bg-white/10
           "
@@ -631,7 +632,8 @@ export function SiteHeader() {
           className="
             rounded-full
             p-3
-            text-white
+            text-foreground
+            dark:text-white/80
             transition
             hover:bg-white/10
           "
@@ -645,7 +647,8 @@ export function SiteHeader() {
           className="
             rounded-full
             p-3
-            text-white
+            text-foreground
+            dark:text-white/80
             transition
             hover:bg-white/10
           "
@@ -660,7 +663,8 @@ export function SiteHeader() {
               relative
               rounded-full
               p-3
-              text-white
+              text-foreground
+              dark:text-white/80
               shadow-lg
               transition
               hover:scale-105
@@ -697,7 +701,8 @@ export function SiteHeader() {
           className="
             rounded-full
             p-3
-            text-white
+            text-foreground
+            dark:text-white/80
             transition
             hover:bg-white/10
             cursor-pointer
