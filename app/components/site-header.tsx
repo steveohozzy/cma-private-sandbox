@@ -56,6 +56,9 @@ export function SiteHeader() {
   // Dynamically calculate the true sum of all item quantities in the basket
   const totalItemsCount = items.reduce((acc, item) => acc + (item.quantity || 1), 0)
 
+  const [search, setSearch] = useState("")
+  const [searchOpen, setSearchOpen] = useState(false)
+
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") {
       return "light"
@@ -143,6 +146,15 @@ export function SiteHeader() {
 
               {/* INPUT */}
               <input
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                  setSearchOpen(true)
+                }}
+                onFocus={() => setSearchOpen(true)}
+                onBlur={() => {
+  setTimeout(() => setSearchOpen(false), 150)
+}}
                 className="
                   relative z-10
                   w-full
@@ -156,6 +168,153 @@ export function SiteHeader() {
                 "
                 placeholder="Search toys..."
               />
+              {searchOpen && (
+  <div
+    onMouseDown={(e) => e.preventDefault()}
+    className="
+      fixed
+      left-1/2
+      top-full
+      w-full
+      overflow-hidden
+      rounded-[30px]
+      border
+      border-white/15
+      bg-[rgba(8,16,32,.96)]
+      backdrop-blur-3xl
+      shadow-[0_40px_120px_rgba(0,0,0,.55)]
+      z-50
+      max-h-[calc(100vh-160px)]
+      max-w-7xl
+      -translate-x-1/2
+      overflow-y-auto
+      lg:top-[70px]
+    "
+  >
+    <div className="grid grid-cols-12 gap-8 p-8">
+      <div className="col-span-12 md:col-span-3">
+  <h3 className="mb-4 text-sm font-black uppercase tracking-wider text-white/50">
+    Suggestions
+  </h3>
+
+  <div className="space-y-1">
+    {[
+      "LEGO City",
+      "Hot Wheels",
+      "Pokemon",
+      "Bluey",
+      "Barbie Dreamhouse",
+    ].map((item) => (
+      <button
+        key={item}
+        className="
+          flex
+          w-full
+          items-center
+          gap-3
+          rounded-xl
+          px-4
+          py-3
+          text-left
+          text-white/80
+          transition
+          hover:bg-white/10
+          hover:text-white
+        "
+      >
+        <Search className="size-4" />
+        {item}
+      </button>
+    ))}
+  </div>
+</div>
+<div className="col-span-12 md:col-span-6">
+  <h3 className="mb-4 text-sm font-black uppercase tracking-wider text-white/50">
+    Products
+  </h3>
+
+  <div className="space-y-3">
+    {[1,2,3].map((p) => (
+      <Link
+        key={p}
+        href="/product"
+        className="
+          flex
+          items-center
+          gap-4
+          rounded-2xl
+          p-3
+          transition
+          hover:bg-white/10
+        "
+      >
+        <div className="h-20 w-20 rounded-xl bg-white/10" />
+
+        <div>
+          <p className="font-bold text-white">
+            LEGO City Police Station
+          </p>
+
+          <p className="mt-1 text-sm text-white/60">
+            LEGO • Construction Toys
+          </p>
+
+          <p className="mt-2 font-black text-primary">
+            £49.99
+          </p>
+        </div>
+      </Link>
+    ))}
+  </div>
+</div>
+<div className="col-span-12 md:col-span-3 space-y-6">
+  <div>
+  <h3 className="mb-4 text-sm font-black uppercase tracking-wider text-white/50">
+    Categories
+  </h3>
+
+  <div className="space-y-2">
+    {[
+      "LEGO",
+      "Building Toys",
+      "Construction",
+      "Outdoor Toys",
+    ].map((c) => (
+      <Link
+        key={c}
+        href="/category"
+        className="
+          block
+          rounded-xl
+          bg-white/5
+          px-4
+          py-3
+          text-white
+          hover:bg-white/10
+        "
+      >
+        {c}
+      </Link>
+    ))}
+  </div>
+</div>
+<div className="rounded-3xl bg-gradient-to-br from-primary to-pink-500 p-6">
+  <p className="font-black text-white">
+    Summer Savings
+  </p>
+
+  <p className="mt-2 text-sm text-white/90">
+    Save up to 50% on selected toys.
+  </p>
+
+  <button className="mt-5 rounded-full bg-white px-5 py-2 font-bold text-black">
+    Shop now
+  </button>
+</div>
+</div>
+</div>
+</div>
+)}
             </div>
           </div>
 
