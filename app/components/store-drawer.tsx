@@ -95,7 +95,7 @@ export function StoreDrawer({
           h-screen
           w-full
           max-w-md
-          bg-white
+          bg-background
           shadow-2xl
           transition-transform
           duration-300
