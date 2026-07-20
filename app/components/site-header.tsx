@@ -46,7 +46,6 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [mobileLevel, setMobileLevel] = useState<string | null>(null)
-  const [theme, setTheme] = useState<"light" | "dark">("light")
 
   const activeMobile = navLinks.find((x) => x.label === mobileLevel)
 
@@ -56,24 +55,24 @@ export function SiteHeader() {
   // Dynamically calculate the true sum of all item quantities in the basket
   const totalItemsCount = items.reduce((acc, item) => acc + (item.quantity || 1), 0)
 
-  const getInitialTheme = (): "light" | "dark" => {
-  if (typeof window === "undefined") {
-    return "light"
-  }
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") {
+      return "light"
+    }
 
-  const saved = localStorage.getItem("theme")
+    const saved = localStorage.getItem("theme")
 
-  if (saved === "light" || saved === "dark") {
-    return saved
-  }
+    if (saved === "light" || saved === "dark") {
+      return saved
+    }
 
-  const sunsetByMonth = [16, 17, 18, 20, 21, 21, 21, 20, 19, 18, 16, 16]
-  const now = new Date()
+    const sunsetByMonth = [16, 17, 18, 20, 21, 21, 21, 20, 19, 18, 16, 16]
+    const now = new Date()
 
-  return now.getHours() >= sunsetByMonth[now.getMonth()]
-    ? "dark"
-    : "light"
-  }
+    return now.getHours() >= sunsetByMonth[now.getMonth()]
+      ? "dark"
+      : "light"
+  })
 
   useEffect(() => {
     document.documentElement.classList.remove("light", "dark")
@@ -81,14 +80,11 @@ export function SiteHeader() {
   }, [theme])
 
   const toggleTheme = () => {
-    const html = document.documentElement
+    const next = theme === "dark" ? "light" : "dark"
 
-    const dark = html.classList.toggle("dark")
-
-    html.classList.toggle("light", !dark)
-
-    localStorage.setItem("theme", dark ? "dark" : "light")
-}
+    localStorage.setItem("theme", next)
+    setTheme(next)
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full overflow-x-clip">
