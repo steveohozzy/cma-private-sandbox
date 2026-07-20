@@ -169,7 +169,7 @@ export function ProductGallery({
 
             rounded-full
 
-            bg-white/70
+            bg-background/70
             backdrop-blur-xl
 
             px-4
@@ -199,7 +199,7 @@ export function ProductGallery({
               border
               border-white/30
 
-              bg-white/70
+              bg-background/70
               backdrop-blur-xl
 
               transition
@@ -233,7 +233,7 @@ export function ProductGallery({
               rounded-full
               border
               border-white/30
-              bg-white/70
+              bg-background/70
               backdrop-blur-xl
               transition
               hover:scale-110
@@ -271,7 +271,7 @@ export function ProductGallery({
               rounded-full
               border
               border-white/30
-              bg-white/70
+              bg-background/70
               backdrop-blur-xl
               transition
               hover:scale-110
@@ -310,7 +310,7 @@ export function ProductGallery({
             border
             border-white/30
 
-            bg-white/70
+            bg-background/70
             backdrop-blur-xl
 
             transition
@@ -348,7 +348,7 @@ export function ProductGallery({
             border
             border-white/30
 
-            bg-white/70
+            bg-background/70
             backdrop-blur-xl
 
             transition
@@ -620,7 +620,7 @@ onTouchEnd={() => {
 
                 border-2
 
-                bg-white/80
+                bg-background/80
 
                 backdrop-blur-xl
 
