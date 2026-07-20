@@ -121,7 +121,7 @@ export function SiteHeader() {
               width={180}
               height={40}
               alt="Logo"
-              sizes="(min-width: 1024px) 180px, 1px"
+              sizes="(min-width: 1024px) 180px, 140px"
               className="w-full h-auto"
             />
           </Link>
