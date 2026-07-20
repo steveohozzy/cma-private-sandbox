@@ -319,7 +319,7 @@ export function SiteHeader() {
           </div>
 
           {/* icons */}
-          <div className="ml-auto flex items-center gap-2 text-white hidden lg:flex">
+          <div className="ml-auto flex items-center gap-2 text-white">
 
             <button
                 onClick={toggleTheme}
@@ -345,13 +345,13 @@ export function SiteHeader() {
                 )}
               </button>
             
-            <User className="hidden sm:block cursor-pointer" />
-            <Heart className="cursor-pointer" />
+            <User className="hidden lg:block cursor-pointer" />
+            <Heart className="cursor-pointer hidden lg:block" />
 
             <div className="relative" onMouseEnter={() => setOpenMiniCart(true)}>
 
               {/* Wrapped Link with an onClick escape hatch to drop the mini-cart visibility state immediately */}
-              <Link href="/cart" onClick={() => setOpenMiniCart(false)}>
+              <Link href="/cart" onClick={() => setOpenMiniCart(false)} className="hidden lg:block">
                 <button
                   className="
                     flex
