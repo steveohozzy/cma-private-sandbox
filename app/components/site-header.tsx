@@ -665,7 +665,6 @@ export function SiteHeader() {
               p-3
               text-foreground
               dark:text-white/80
-              shadow-lg
               transition
               hover:scale-105
               cursor-pointer
