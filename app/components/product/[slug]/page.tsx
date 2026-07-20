@@ -109,10 +109,8 @@ export default function ProductPage() {
 
             <div
               className={`
-                hidden
-                lg:block
-                sticky
-                top-28
+                lg:sticky
+                lg:top-28
                 transition-[z-index]
                 ${
                   storeDrawerOpen

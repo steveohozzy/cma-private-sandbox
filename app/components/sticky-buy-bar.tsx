@@ -28,7 +28,7 @@ export function StickyBuyBar({
     <div
       className="
         fixed
-        bottom-0
+        bottom-20
         left-0
         right-0
 
@@ -37,8 +37,7 @@ export function StickyBuyBar({
         border-t
         border-white/20
 
-        bg-white/70
-
+        bg-background
         backdrop-blur-2xl
 
         shadow-[0_-10px_40px_rgba(0,0,0,.12)]
@@ -107,6 +106,8 @@ export function StickyBuyBar({
             border-white/20
 
             bg-white/50
+
+            dark:bg-background/80
 
             backdrop-blur-xl
 
