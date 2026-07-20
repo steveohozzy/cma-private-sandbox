@@ -246,7 +246,7 @@ export default function Theo() {
       {!open &&
         <button
           onClick={()=>setOpen(true)}
-          className="fixed bottom-5 right-2 size-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center cursor-pointer"
+          className="fixed bottom-5 right-2 size-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center cursor-pointer z-50"
         >
           <MessageCircle />
         </button>
